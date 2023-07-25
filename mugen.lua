@@ -572,7 +572,7 @@ local Window = Library:CreateWindow({
 
 
 local Tabs = {
-   Main = Window:AddTab('Project Slayers'),
+   Main = Window:AddTab('Main'),
    Misc = Window:AddTab('Misc'),
    Teleports = Window:AddTab('Teleports'),
    Mugen = Window:AddTab('Mugen'),
