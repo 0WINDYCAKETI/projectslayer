@@ -689,124 +689,6 @@ LeftGroupBox2:AddToggle('KillAura', {
    end
 })
 
-local firing = false -- Variable to track the state
-
-LeftGroupBox2:AddToggle('BypassGKA', {
-    Text = 'Bypass GKA (ARROW) [USE THIS FIRST]',
-    Default = false,
-    Tooltip = 'Bypass GKA',
-    Callback = function(state)
-        firing = state -- Update the firing state
-
-        if firing then -- Start the loop only if firing is true
-            while firing do -- Loop while firing is true
-                local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-                Handle_Initiate_S_:InvokeServer("skil_ting_asd", game.Players.LocalPlayer, "arrow_knock_back", 5)
-                wait(14)
-            end
-        end
-    end
-})
-
-
-local running = false -- Variable to track the state
-
-LeftGroupBox2:AddToggle('GKAarroWW', {
-    Text = 'Global Kill Aura (ARROW) [FAST CAN KICK]',
-    Default = false,
-    Tooltip = 'Global Kill Aura (ARROW)',
-    Callback = function(state)
-        running = state -- Update the running state
-
-        if running then -- Start the loop only if running is true
-            while running do -- Loop while running is true
-                local success, error = pcall(function()
-                    for i, v in next, workspace.Mobs:GetDescendants() do
-                        if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-                            local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                            Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                        end
-                    end
-                end)
-
-                if not success then
-                    print("An error occurred:", error)
-                end
-
-                -- Add a delay between iterations to prevent excessive server load
-                wait() -- Adjust the delay time as desired
-            end
-        end
-    end
-})
-
-local running = false -- Variable to track the state
-
-LeftGroupBox2:AddToggle('GKAareroWeeW', {
-    Text = 'Global Kill Aura (SAFEST)',
-    Default = false,
-    Tooltip = 'Global Kill Aura (SAFEST)',
-    Callback = function(state)
-        running = state -- Update the running state
-
-        if running then -- Start the loop only if running is true
-            while running do -- Loop while running is true
-                local success, error = pcall(function()
-                    local hitCounter = {} -- Counter for each model
-
-                    for i, v in next, workspace.Mobs:GetDescendants() do
-                        if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-                            local modelId = v:GetFullName()
-
-                            -- Check if the model has a counter and initialize it if not present
-                            if not hitCounter[modelId] then
-                                hitCounter[modelId] = 0
-                            end
-
-                            -- Check if the model has been hit less than 2 times
-                            if hitCounter[modelId] < 2 then
-                                local humanoid = v:FindFirstChildOfClass("Humanoid")
-                                if humanoid and humanoid.Health > 0 then
-                                    local Handle_Initiate_S_ = game.ReplicatedStorage.Remotes.To_Server.Handle_Initiate_S_
-                                    Handle_Initiate_S_:InvokeServer("arrow_knock_back_damage", game.Players.LocalPlayer.Character, v.HumanoidRootPart.CFrame, v, 500, 500)
-                                    hitCounter[modelId] = hitCounter[modelId] + 1
-                                else
-                                    -- The humanoid health is 0, change to another model
-                                    -- Replace the code below with the logic to change the model
-                                    print("Model with health 0:", modelId)
-                                end
-                            end
-
-                            -- Check if we hit two mobs/models
-                            local hitCount = 0
-                            for _, count in pairs(hitCounter) do
-                                hitCount = hitCount + count
-                            end
-                            if hitCount >= 2 then
-                                break -- Exit the loop if we hit two mobs/models
-                            end
-                        end
-                    end
-                end)
-
-                if not success then
-                    print("An error occurred:", error)
-                end
-
-                -- Add a delay between iterations to prevent excessive server load
-                wait() -- Adjust the delay time as desired
-            end
-        end
-    end
-})
-
-
 LeftGroupBox:AddSlider('KASlider', {
     Text = 'Kill Aura',
     Default = 1.25,
@@ -2629,7 +2511,7 @@ SaveManager:IgnoreThemeSettings()
 
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
 
-ThemeManager:SetFolder('Water Hub Community')
-SaveManager:SetFolder('SharkHubCommunity/ProjectSlayers')
+ThemeManager:SetFolder('WaterHubCommunity')
+SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers')
 SaveManager:BuildConfigSection(Tabs['Settings'])
 ThemeManager:ApplyToTab(Tabs['Settings'])
