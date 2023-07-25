@@ -2512,7 +2512,7 @@ SaveManager:IgnoreThemeSettings()
 
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
 
-ThemeManager:SetFolder('Water Hub Community')
+ThemeManager:SetFolder('WaterHubCommunity')
 SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers')
 SaveManager:BuildConfigSection(Tabs['Settings'])
 ThemeManager:ApplyToTab(Tabs['Settings'])
