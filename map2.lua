@@ -2496,9 +2496,6 @@ end)
 -- UI Settings
 local MenuGroup = Tabs['Settings']:AddLeftGroupbox('Menu')
 
--- UI Settings
-local MenuGroup = Tabs['Settings']:AddLeftGroupbox('Menu')
-
 -- I set NoUI so it does not show up in the keybinds menu
 MenuGroup:AddButton('Unload', function() Library:Unload() end)
 MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'End', NoUI = true, Text = 'Menu Key Bind' })
@@ -2513,6 +2510,6 @@ SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
 
 ThemeManager:SetFolder('WaterHubCommunity')
-SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers')
+SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers/Map 2')
 SaveManager:BuildConfigSection(Tabs['Settings'])
 ThemeManager:ApplyToTab(Tabs['Settings'])
