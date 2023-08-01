@@ -2583,6 +2583,6 @@ SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
 
 ThemeManager:SetFolder('WaterHubCommunity')
-SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers')
+SaveManager:SetFolder('WaterHubCommunity/ProjectSlayers/Mugen')
 SaveManager:BuildConfigSection(Tabs['Settings'])
 ThemeManager:ApplyToTab(Tabs['Settings'])
